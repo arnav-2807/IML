@@ -1,0 +1,23 @@
+def find_s(training_data): 
+    hypothesis = None  
+    for example in training_data: 
+        features, label = example[:-1], example[-1]  
+        if label.lower() == "yes":  
+            if hypothesis is None: 
+                hypothesis = list(features) 
+            else: 
+                for i in range(len(hypothesis)): 
+                    if hypothesis[i] != features[i]: 
+                        hypothesis[i] = "?"  
+    return hypothesis 
+print("Enter the number of training examples:") 
+n = int(input()) 
+training_data = [] 
+print("Enter the training examples row-wise (attributes + target label):") 
+for _ in range(n): 
+    example = input().split()  
+    training_data.append(example) 
+
+hypothesis = find_s(training_data) 
+print("\nFinal Hypothesis:", hypothesis)
+
